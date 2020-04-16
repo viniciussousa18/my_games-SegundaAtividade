@@ -5,6 +5,11 @@
  */
 package view;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Banda
@@ -17,6 +22,22 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
     }
+    
+    public void Exit(){
+    
+      
+        // exibe um alerta
+        int output = JOptionPane.showConfirmDialog(null, "Fechar a aplicação", "sair", JOptionPane.YES_NO_OPTION);
+        
+        // Se clicou em [sim]
+        if ( output == JOptionPane.YES_OPTION) {
+            
+            // Sai da aplicação
+            System.exit(0);
+            
+        }
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +48,189 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Desktop = new javax.swing.JDesktopPane();
+        lblLogo = new javax.swing.JLabel();
+        lblUser = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
+        btnOut = new javax.swing.JButton();
+        mainmenu = new javax.swing.JMenuBar();
+        menuGames = new javax.swing.JMenu();
+        menuNew = new javax.swing.JMenu();
+        menuNewGame = new javax.swing.JMenuItem();
+        menuNewConsole = new javax.swing.JMenuItem();
+        menuHelp = new javax.swing.JMenu();
+        menuHelpAbout = new javax.swing.JMenuItem();
+        menuOptions = new javax.swing.JMenu();
+        menuOptionOut = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("My Games em Java");
+        setAlwaysOnTop(true);
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
+
+        Desktop.setBackground(new java.awt.Color(0, 102, 102));
+
+        javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
+        Desktop.setLayout(DesktopLayout);
+        DesktopLayout.setHorizontalGroup(
+            DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 449, Short.MAX_VALUE)
+        );
+        DesktopLayout.setVerticalGroup(
+            DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Joystick 80x80.png"))); // NOI18N
+
+        lblUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUser.setText("Usuário ");
+
+        lblDate.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDate.setText("Data:");
+
+        btnOut.setText("Sair...");
+        btnOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOutActionPerformed(evt);
+            }
+        });
+
+        menuGames.setText("Meus Jogos");
+        mainmenu.add(menuGames);
+
+        menuNew.setText("Novo");
+
+        menuNewGame.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.ALT_MASK));
+        menuNewGame.setText("Jogo");
+        menuNew.add(menuNewGame);
+
+        menuNewConsole.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        menuNewConsole.setText("Console");
+        menuNew.add(menuNewConsole);
+
+        mainmenu.add(menuNew);
+
+        menuHelp.setText("Ajuda");
+        menuHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuHelpActionPerformed(evt);
+            }
+        });
+
+        menuHelpAbout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.ALT_MASK));
+        menuHelpAbout.setText("Sobre");
+        menuHelpAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuHelpAboutActionPerformed(evt);
+            }
+        });
+        menuHelp.add(menuHelpAbout);
+
+        mainmenu.add(menuHelp);
+
+        menuOptions.setText("Opçoes");
+
+        menuOptionOut.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        menuOptionOut.setText("Sair...");
+        menuOptionOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuOptionOutActionPerformed(evt);
+            }
+        });
+        menuOptions.add(menuOptionOut);
+
+        mainmenu.add(menuOptions);
+
+        setJMenuBar(mainmenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnOut)
+                            .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Desktop)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(lblUser)
+                .addGap(18, 18, 18)
+                .addComponent(lblDate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addComponent(lblLogo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnOut)
+                .addGap(20, 20, 20))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(616, 439));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    // Método executado ao iniciar essa janela
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
+        // objeto do tipo java
+        Date brDate = new Date();
+        
+        //define o formato da data como "dd/mm/aaaa"
+        //SimpleDateFormat formatedDate = new SimpleDateFormat("dd/MM/yyyy");
+        
+        // Define o formato da data como "dd 'de' MMMM 'de' yyyy"
+        Locale dateBr = new Locale("pt","BR");
+        SimpleDateFormat formatedDate = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", dateBr);
+        
+        // exibir a data em lblDate
+        lblDate.setText(formatedDate.format(brDate));
+        
+    }//GEN-LAST:event_formWindowActivated
+
+    // metodo executado em sair
+    private void menuOptionOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOptionOutActionPerformed
+Exit();      
+    }//GEN-LAST:event_menuOptionOutActionPerformed
+
+    // metodo executado ao clicar no sair
+    private void btnOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutActionPerformed
+        Exit();
+    }//GEN-LAST:event_btnOutActionPerformed
+
+    // metodo executado quanddo clicamos em sobre
+    private void menuHelpAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuHelpAboutActionPerformed
+        
+        // abre a janela about
+        About about = new About();
+        about.setVisible(true);
+        
+    }//GEN-LAST:event_menuHelpAboutActionPerformed
+
+    private void menuHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuHelpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuHelpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -54,7 +243,7 @@ public class MainFrame extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -79,5 +268,19 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane Desktop;
+    private javax.swing.JButton btnOut;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblLogo;
+    public static javax.swing.JLabel lblUser;
+    private javax.swing.JMenuBar mainmenu;
+    private javax.swing.JMenu menuGames;
+    private javax.swing.JMenu menuHelp;
+    private javax.swing.JMenuItem menuHelpAbout;
+    private javax.swing.JMenu menuNew;
+    private javax.swing.JMenuItem menuNewConsole;
+    private javax.swing.JMenuItem menuNewGame;
+    private javax.swing.JMenuItem menuOptionOut;
+    private javax.swing.JMenu menuOptions;
     // End of variables declaration//GEN-END:variables
 }

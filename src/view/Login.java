@@ -48,6 +48,9 @@ public class Login extends javax.swing.JFrame {
                 // Instanciar a janela principal
                 MainFrame mainframe = new MainFrame();
                 
+                 //obtem nome do usario e mostra em mainframe
+                MainFrame.lblUser.setText(res.getString("u_name"));
+                
                 // exibir mainframe
                 mainframe.setVisible(true);
                 
@@ -121,11 +124,14 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Senha :");
 
+        txtEmail.setText("joca@silva.com");
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
+
+        txtpassword.setText("12345");
 
         btnLogin.setText("Entrar");
         btnLogin.setEnabled(false);
